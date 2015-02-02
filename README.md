@@ -1,17 +1,14 @@
-Express Generator + Gulp
+# Express Generator + Gulp
 
 I really like the [Express Generator](http://expressjs.com/starter/generator.html) and thought it would be interesting to see how it works with Gulp.
 
-Install the generator:
+##### Install the generator:
 
-  {% highlight php %}
     $ npm install express-generator -g
-  {% endhighlight%}
 
-Display the command options with the -h option:
+##### Display the command options with the -h option:
 
-  {% highlight php %}
-      $ express -h
+    $ express -h
 
         Usage: express [options] [dir]
 
@@ -24,11 +21,9 @@ Display the command options with the -h option:
           -H, --hogan         add hogan.js engine support
           -c, --css <engine>  add stylesheet <engine> support (less|stylus|compass) (defaults to plain css)
           -f, --force         force on non-empty directory
-  {% endhighlight%}
 
 I will keep everything default apart from the template engine. I will use Handlebars for this example.
 
-  {% highlight php %}
      $ express --hbs --git
 
         create : .
@@ -56,61 +51,51 @@ I will keep everything default apart from the template engine. I will use Handle
         run the app:
           $ DEBUG=express-generator-gulp-prototype:* ./bin/www
 
-  {% endhighlight%}
 
-Then install dependencies:
+##### Then install dependencies:
 
-  {% highlight php %}
-     $ npm install
-  {% endhighlight%}
+    $ npm install
 
-Add Gulp and Gulp Nodemon into the solution:
+##### Add Gulp and Gulp Nodemon into the solution:
 
-{% highlight php %}
-  $ npm install gulp gulp-nodemon --save-dev
-{% endhighlight%}
+    $ npm install gulp gulp-nodemon --save-dev
 
-Add a Gulpfile.js in the root folder.
+##### Add a Gulpfile.js in the root folder.
 
-Add the dependencies and tasks in the gulp file:
+##### Add the dependencies and tasks in the gulp file:
 
-{% highlight javascript %}
-  var gulp = require('gulp');
-  var nodemon = require('gulp-nodemon');
+      var gulp = require('gulp');
+      var nodemon = require('gulp-nodemon');
 
-  // express generator
-  gulp.task('server', function () {
-   nodemon({
-       script: './bin/www',
-       env: { 'NODE_ENV': 'development' },
-       nodeArgs: ['--debug']
-   });
-  });
+      // express generator
+      gulp.task('server', function () {
+       nodemon({
+           script: './bin/www',
+           env: { 'NODE_ENV': 'development' },
+           nodeArgs: ['--debug']
+       });
+      });
 
-  //default
-  gulp.task('default', ['server'], function() {
+      //default
+      gulp.task('default', ['server'], function() {
 
-  });
-{% endhighlight%}
+      });
 
-Run Gulp:
+##### Run Gulp:
 
-{% highlight php %}
-  $ gulp
-  [20:41:14] Using gulpfile ~/ExpressGenerator/Gulpfile.js
-  [20:41:14] Starting 'server'...
-  [20:41:14] Finished 'server' after 1.13 ms
-  [20:41:14] Starting 'default'...
-  [20:41:14] Finished 'default' after 14 μs
-  [gulp] [nodemon] v1.3.6
-  [gulp] [nodemon] to restart at any time, enter `rs`
-  [gulp] [nodemon] watching: *.*
-  [gulp] [nodemon] starting `node --debug ./bin/www`
-  debugger listening on port 5858
+      $ gulp
+      [20:41:14] Using gulpfile ~/ExpressGenerator/Gulpfile.js
+      [20:41:14] Starting 'server'...
+      [20:41:14] Finished 'server' after 1.13 ms
+      [20:41:14] Starting 'default'...
+      [20:41:14] Finished 'default' after 14 μs
+      [gulp] [nodemon] v1.3.6
+      [gulp] [nodemon] to restart at any time, enter `rs`
+      [gulp] [nodemon] watching: *.*
+      [gulp] [nodemon] starting `node --debug ./bin/www`
+      debugger listening on port 5858
 
-{% endhighlight%}
-
-View Express Generator Application on localhost:
+##### View Express Generator Application on localhost:
 
 [http://localhost:3000/](http://localhost:3000/)
 
